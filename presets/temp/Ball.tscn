@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Textures/tous01.svg" type="Texture" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+
+radius = 52.0837
+
+[node name="Ballon" type="RigidBody2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1.02669, 1.54002 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 476, 1887.79, 130, 124 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+

@@ -1,0 +1,159 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Textures/GUI/pause-normal.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Textures/GUI/pause-pressed.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Textures/GUI/play-normal.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Textures/GUI/play-pressed.png" type="Texture" id=4]
+[ext_resource path="res://presets/item_button.tscn" type="PackedScene" id=5]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Control
+
+export(NodePath) var buttons_container
+
+var vb
+
+func _ready():
+	if buttons_container:
+		vb = get_node(buttons_container)
+	pass
+
+func _gui_input(event):
+	if event.is_action_released(\"tap\"):
+		if vb.get_child_count() > 0:
+			var group = vb.get_child(0).group
+			group.get_pressed_button().drop()
+#	get_tree().set_input_as_handled()
+"
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends ScrollContainer
+
+func _ready():
+	if $vb.get_child_count()>0:
+		$vb.get_child(0).pressed = true
+		$vb.get_child(0).sprite.activate(true)
+		
+	
+#func _process(delta):
+#	pass
+
+var swype = false
+var swypePoint = null
+var swypeDX = 0
+
+func inputEvent( ev ):
+	if (ev is InputEventMouseButton)and(ev.pressed == true):
+		swype = true
+		swypePoint = ev.position.x
+		swypeDX = 0
+	if (ev is InputEventMouseButton)and(ev.pressed == false):
+		swype = false
+		var tween = Tween.new()
+		add_child(tween)
+		tween.interpolate_method(get_node(\"ScrollContainer\"), \"set_h_scroll\", get_node(\"ScrollContainer\").get_h_scroll(), get_node(\"ScrollContainer\").get_h_scroll()-2*swypeDX, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		tween.interpolate_callback(tween, 0.5, \"queue_free\")
+		tween.start()
+		swypePoint = null
+	if swype and (ev is InputEventMouseMotion):
+		get_node(\"ScrollContainer\").set_h_scroll(get_node(\"ScrollContainer\").get_h_scroll() - ev.position.x + swypePoint)
+		swypeDX = ev.position.x - swypePoint
+"
+
+[sub_resource type="ButtonGroup" id=3]
+
+
+[node name="GUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="hb" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 50.0
+margin_right = -50.0
+margin_bottom = -50.0
+
+[node name="vb" type="VBoxContainer" parent="hb"]
+margin_right = 1616.0
+margin_bottom = 980.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="hb/vb"]
+margin_right = 1616.0
+margin_bottom = 128.0
+alignment = 1
+
+[node name="pause" type="TextureButton" parent="hb/vb/HBoxContainer"]
+margin_right = 128.0
+margin_bottom = 128.0
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="hb/vb/HBoxContainer"]
+margin_left = 132.0
+margin_right = 806.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+
+[node name="play_scene" type="TextureButton" parent="hb/vb/HBoxContainer"]
+margin_left = 810.0
+margin_right = 938.0
+margin_bottom = 128.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+
+[node name="Control2" type="Control" parent="hb/vb/HBoxContainer"]
+margin_left = 942.0
+margin_right = 1616.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+
+[node name="playground" type="Control" parent="hb/vb"]
+margin_top = 132.0
+margin_right = 1616.0
+margin_bottom = 980.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = SubResource( 1 )
+buttons_container = NodePath("../../ScrollContainer/vb")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="hb"]
+margin_left = 1620.0
+margin_right = 1820.0
+margin_bottom = 980.0
+grow_horizontal = 0
+rect_min_size = Vector2( 200, 0 )
+scroll_horizontal_enabled = false
+script = SubResource( 2 )
+
+[node name="vb" type="VBoxContainer" parent="hb/ScrollContainer"]
+margin_right = 200.0
+margin_bottom = 458.0
+size_flags_horizontal = 3
+
+[node name="item_button" parent="hb/ScrollContainer/vb" instance=ExtResource( 5 )]
+margin_right = 200.0
+group = SubResource( 3 )
+amount = 2
+
+[node name="item_button2" parent="hb/ScrollContainer/vb" instance=ExtResource( 5 )]
+margin_top = 154.0
+margin_right = 200.0
+margin_bottom = 304.0
+group = SubResource( 3 )
+icon = ExtResource( 1 )
+amount = 3
+
+[node name="item_button3" parent="hb/ScrollContainer/vb" instance=ExtResource( 5 )]
+margin_top = 308.0
+margin_right = 200.0
+margin_bottom = 458.0
+group = SubResource( 3 )
+icon = ExtResource( 3 )
+

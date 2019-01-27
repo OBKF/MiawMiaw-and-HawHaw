@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://items.png" type="Texture" id=1]
+
+[node name="Mkhadda" type="RigidBody2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -63.1111, -7.5218, -54.6667, -4.41071, -36.4444, -14.6329, -3.11111, -15.5218, 37.3333, -8.41071, 45.3333, -3.96625, 56.4445, -7.07736, 59.5555, -1.29959, 55.1111, 4.03375, 57.3333, 8.47818, 40.8889, 8.03375, 12, 15.5893, -22.2222, 12.9226, -41.7778, 13.8115, -53.3333, 8.03375, -61.7778, 10.7004, -62.6667, 2.70041, -67.5556, -3.5218 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 191.209, 7.5, 140.5, 41.5 )
+

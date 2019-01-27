@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/dragable_element.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Textures/tous01.svg" type="Texture" id=2]
+
+[sub_resource type="PhysicsMaterial" id=1]
+
+bounce = 0.2
+
+[node name="wooden_board" type="RigidBody2D"]
+input_pickable = true
+mass = 1.02041
+physics_material_override = SubResource( 1 )
+gravity_scale = 4.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="cp" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, 0.250265 )
+scale = Vector2( 1, 0.99247 )
+polygon = PoolVector2Array( -98.5066, -11.5095, -0.752609, -8.70866, 98.0479, -11.6853, 98.783, 9.0533, -98.9559, 9.79397 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 272, 1754, 419, 96 )
+

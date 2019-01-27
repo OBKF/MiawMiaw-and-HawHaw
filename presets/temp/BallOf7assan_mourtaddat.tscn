@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://items.png" type="Texture" id=1]
+
+[node name="3 Points Basket" type="RigidBody2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="COllision Plygon" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -20.9264, -17.8313, -5.37088, -26.7201, 10.1847, -23.1646, 19.9624, -12.4979, 21.7402, -0.0534821, 15.9624, 13.7243, 3.96245, 22.1687, -7.14867, 23.5021, -20.482, 13.7243, -26.7042, -3.1646 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 102.94, 235.303, 72, 54 )
+

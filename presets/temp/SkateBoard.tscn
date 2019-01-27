@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Textures/tous01.svg" type="Texture" id=1]
+
+[sub_resource type="PhysicsMaterial" id=1]
+
+friction = 0.0
+
+[node name="SkateBoaghd" type="RigidBody2D"]
+mass = 2.0
+physics_material_override = SubResource( 1 )
+gravity_scale = 2.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="COllision Plygon" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -170.597, -15.3349, -180.776, -27.3096, -110.125, -27.3096, 46.7441, -29.7045, 144.937, -42.8767, 176.071, -39.883, 179.664, -29.1058, 151.523, -14.1374, 146.134, 18.7931, 131.765, 23.583, 73.6873, 14.0032, 8.42499, 26.5767, -26.9005, 46.335, -102.341, 25.3792, -125.692, -1.56392 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 31.0435, 1406.94, 374.957, 99 )
+

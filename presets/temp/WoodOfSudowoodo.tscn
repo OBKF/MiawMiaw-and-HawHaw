@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Textures/tous01.svg" type="Texture" id=1]
+
+[node name="wooden_board" type="RigidBody2D"]
+mass = 3.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="cp" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, 0.250265 )
+scale = Vector2( 1, 0.99247 )
+polygon = PoolVector2Array( -197.54, -20.5296, -140.66, -17.5132, -41.2701, -22.9427, 37.1644, -31.9919, 74.286, -37.4214, 196.428, -23.546, 200.021, 16.8737, -8.3396, 34.9721, -72.4044, 38.5917, -197.54, 22.9065 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 272, 1754, 419, 96 )
+

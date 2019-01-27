@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Textures/tous01.svg" type="Texture" id=1]
+
+[sub_resource type="PhysicsMaterial" id=1]
+
+absorbent = true
+
+[node name="Pilow" type="RigidBody2D"]
+mass = 0.3
+physics_material_override = SubResource( 1 )
+gravity_scale = 2.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 427, 1538.45, 292.5, 167 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -36.0971, -66.6374, -26.564, -70.6096, 18.8538, -77.9703, 67.1785, -73.3901, 102.531, -54.3238, 119.214, -69.0207, 137.088, -63.8569, 144.635, -30.491, 131.924, -21.7523, 123.725, 4.17949, 105.695, 31.641, 83.6711, 49.5991, 88.6349, 58.0667, 84.8391, 68.5783, 63.2319, 72.0822, 51.2604, 72.0822, 35.201, 77.63, -53.5636, 71.2062, -103.786, 49.0151, -114.589, 59.5267, -140.284, 45.5112, -139.116, 25.948, -118.385, 25.656, -118.385, 8.13669, -99.1138, -26.61, -69.1738, -54.0318, -73.038, -64.6514, -52.7801, -78.1566 )
+

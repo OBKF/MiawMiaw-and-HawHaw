@@ -1,0 +1,149 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/Fonts/archivo-black/ArchivoBlack.otf" type="DynamicFontData" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+bg_color = Color( 1, 1, 1, 1 )
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0.501961, 1, 0.784314 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id=2]
+
+bg_color = Color( 1, 1, 1, 1 )
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 1, 0.501961, 0, 0.784314 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id=3]
+
+bg_color = Color( 1, 1, 1, 1 )
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 1, 1, 1, 0.784314 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 4
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 38
+font_data = ExtResource( 1 )
+
+[sub_resource type="ButtonGroup" id=5]
+
+
+[sub_resource type="StreamTexture" id=6]
+
+flags = 13
+load_path = "res://.import/element_placeholder.png-0e1b648bb8b478b2e2ba583d6c2a32bf.stex"
+
+[sub_resource type="GDScript" id=7]
+
+script/source = "extends Button
+
+export(int) var amount = 1
+
+onready var sprite = get_node(\"node/sprite\")
+var activated = true if amount > 0 else false
+
+func _ready():
+	connect(\"toggled\", self,\"_on_toggled\")
+	text = str(amount)
+	pass
+	
+func _on_toggled(state):
+	if state:
+		sprite.activate(true)
+	else:
+		sprite.activate(false)
+
+func drop():
+	if amount > 0:
+		amount -= 1
+		disabled = true if amount < 1 else false
+		sprite.activate(not disabled)
+		
+#		for btn in group.get_buttons():
+#			if btn !=  self:
+#				btn.pressed = true
+#				btn.sprite.activate(true)
+#				break
+	text = str(amount)
+
+
+"
+
+[sub_resource type="GDScript" id=8]
+
+script/source = "extends Sprite
+
+var parent
+var active = false
+
+func _ready():
+	activate(false)
+	parent = get_parent().get_parent()
+	texture = parent.icon
+
+func activate(t=true):
+	if t:
+		set_process(true)
+		visible = true
+		active = true
+	else:
+		set_process(false)
+		visible = false
+		active = false
+		
+func _process(delta):
+	global_position = get_viewport().get_mouse_position()
+	
+	
+	
+	"
+
+[node name="item_button" type="Button"]
+margin_right = 188.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 150 )
+size_flags_horizontal = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+toggle_mode = true
+shortcut_in_tooltip = false
+group = SubResource( 5 )
+text = "0"
+icon = SubResource( 6 )
+align = 2
+script = SubResource( 7 )
+
+[node name="node" type="Node" parent="."]
+
+[node name="sprite" type="Sprite" parent="node"]
+script = SubResource( 8 )
+

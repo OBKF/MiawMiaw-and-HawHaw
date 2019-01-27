@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Textures/tous01.svg" type="Texture" id=1]
+
+[node name="Pilow" type="RigidBody2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="COllision Plygon" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -140.648, -68.9975, -20.1925, -85.676, 130.336, -66.2402, 141.959, 56.5543, 4.36189, 84.815, -134.625, 54.2378 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 46.666, 1539.95, 302, 185 )
+

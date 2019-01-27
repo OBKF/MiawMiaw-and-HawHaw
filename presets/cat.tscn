@@ -1,0 +1,203 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Textures/tous01.svg" type="Texture" id=1]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "idle"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/tail:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5, 3, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 15.0, -15.0, 15.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/head:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.4, 2.8, 3.3, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -15.0, 15.0, -15.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/head:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.4, 2.8, 3.3, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.939713 ), Vector2( 1, 0.987133 ), Vector2( 1, 0.961695 ), Vector2( 1, 1.00048 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/tail:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.5, 3, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.910365, 0.875814 ), Vector2( 0.969158, 1.00959 ), Vector2( 1.01248, 1.09383 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/head:region_rect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 799, 1250, 211, 153 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "scared"
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/head:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1012, 1221, 206, 154 ), Rect2( 1012, 1221, 206, 154 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/head:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 30.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/head:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.05329, 1.05329 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/tail:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.55, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -44.9999, 15.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/tail:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.55, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.873607, 0.899688 ), Vector2( 1.20194, 1.17548 ), Vector2( 1, 1 ) ]
+}
+
+[node name="cat" type="RigidBody2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 23.8328, 33.7632 )
+rotation = 0.00678911
+polygon = PoolVector2Array( -38.2597, -69.5291, -65.1968, -58.6212, -57.1422, -42.3897, -49.4577, -22.1835, -35.1071, -14.7337, -17.2383, -15.6495, 2.56532, -24.1256, 10.4285, -36.0957, 9.59905, -41.2539, 2.45205, -40.8082, -5.94587, -49.0929, -25.4413, -53.7272 )
+
+[node name="visual" type="Node2D" parent="."]
+editor/display_folded = true
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="tail" type="Sprite" parent="visual"]
+position = Vector2( 57.8094, -4.39021 )
+texture = ExtResource( 1 )
+offset = Vector2( 21.2623, -41.0246 )
+region_enabled = true
+region_rect = Rect2( 1027, 1376, 80, 112 )
+
+[node name="fl1" type="Sprite" parent="visual"]
+position = Vector2( -40.0837, 20.8376 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.644455, 9.17052 )
+region_enabled = true
+region_rect = Rect2( 830, 1517, 28, 48 )
+
+[node name="fl2" type="Sprite" parent="visual"]
+position = Vector2( 25.9342, 24.2671 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.644455, 9.17052 )
+region_enabled = true
+region_rect = Rect2( 924, 1518, 30, 49 )
+
+[node name="body" type="Sprite" parent="visual"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 846, 1412, 136, 96 )
+
+[node name="fl3" type="Sprite" parent="visual"]
+position = Vector2( -13.8873, 18.8084 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, 14.295 )
+region_enabled = true
+region_rect = Rect2( 866, 1519, 32, 54 )
+
+[node name="fl4" type="Sprite" parent="visual"]
+position = Vector2( 42.1199, 14.0418 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, 14.295 )
+region_enabled = true
+region_rect = Rect2( 968, 1514, 30, 46 )
+
+[node name="head" type="Sprite" parent="visual"]
+position = Vector2( -40.1566, -8.11597 )
+texture = ExtResource( 1 )
+offset = Vector2( -22.5674, -40.9077 )
+region_enabled = true
+region_rect = Rect2( 1012, 1221, 206, 154 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 1 )
+anims/scared = SubResource( 2 )
+

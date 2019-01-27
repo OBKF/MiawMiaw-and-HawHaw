@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Hypothtical Dog.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="PhysicsMaterial" id=3]
+
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id=2]
+
+extents = Vector2( 29.2434, 30.125 )
+
+[node name="Hypothtical Dog" type="RigidBody2D"]
+position = Vector2( -233.625, 289.125 )
+mass = 6.0
+physics_material_override = SubResource( 3 )
+gravity_scale = 2.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+force = 1200
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+

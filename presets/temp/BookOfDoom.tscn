@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://items.png" type="Texture" id=1]
+
+[node name="Ktab Ta3 Tarikh" type="RigidBody2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="COllision Plygon" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -38.2598, -3.1646, -33.8153, -9.83126, 6.18468, -16.9424, 38.1847, -12.0535, 42.6291, 4.39096, -6.25977, 11.0576, -35.5931, 4.39096 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( -7.06, 169.303, 116, 63 )
+
